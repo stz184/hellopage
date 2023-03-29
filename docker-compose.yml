@@ -1,0 +1,33 @@
+version: "3.4"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      target: prod
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+      target: prod
+    environment:
+      - MONGODB_CONNECTION_URI
+      - BACKEND_PORT
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+      - REACT_APP_OPEN_WEATHER_MAP_API_KEY
+    expose:
+      - "27170"
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
