@@ -84,16 +84,17 @@ h2 {
   padding: 0;
 }
 
-h3 {
-  font-size: min(15vw, 30px);
-  font-weight: normal;
-  color: var(--fg-highlight);
-}
 
-#current-time {
+
+#widgets {
   margin: 0;
   padding: 0;
   height: 36px;
+  display: flex;
+  justify-content: space-between;
+  font-size: min(15vw, 30px);
+  font-weight: normal;
+  color: var(--fg-highlight);
 }
 
 #search {

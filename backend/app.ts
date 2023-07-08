@@ -4,7 +4,7 @@ import ExpressApp from "./ExpressInit/ExpressInit";
 import { Server } from "http";
 import { logger } from "./Logger/CreateLogger";
 import 'reflect-metadata'
-import User from './Controller/userController/userController';
+import User from './Controller/weatherController/weatherController';
 dotenv.config({ path: `${process.cwd()}\\.env.${process.env.ENV}` })
 // import conn from './Database/dbConfig'; // connection is a function which return a object, and in this object call the method to connect the 'db'
 //

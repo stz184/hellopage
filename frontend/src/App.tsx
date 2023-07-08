@@ -1,48 +1,41 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import './App.css';
+import TimeWidget from './components/TimeWidget';
+import WeatherWidget from './components/WeatherWidget';
+
 
 function App() {
     const [searchEngine, setSearchEngine] = React.useState('https://www.duckduckgo.com');
     const [time, setTime] = React.useState('');
-    const [greeting, setGreeting] = React.useState('');
-
-    useEffect(() => {
-        function updateClock() {
-            const date = new Date()
-            setTime(date.toLocaleTimeString());
-            const hour = date.getHours();
-            let greeting = "";
-            if (hour < 5 || hour >= 18) {
-                greeting = "Good evening."
-            } else if (hour < 12) {
-                greeting = "Good morning."
-            } else {
-                greeting = "Good afternoon."
-            }
-            setGreeting(greeting);
+    const greeting = useMemo(() => {
+        const date = new Date()
+        const hour = date.getHours();
+        let greeting = "";
+        if (hour < 5 || hour >= 18) {
+            greeting = "Good evening."
+        } else if (hour < 12) {
+            greeting = "Good morning."
+        } else {
+            greeting = "Good afternoon."
         }
-
-        const interval = setInterval(updateClock, 1000);
-        return () => clearInterval(interval);
-    });
+        return greeting;
+    }, []);
 
     return (
         <>
             <div id="main-container">
                 <h1>{greeting}</h1>
                 <div id="main-content">
-                    <h3 id="current-time">
-                        <span id="current-time-text">{time}</span>
-                    </h3>
+                    <div id="widgets">
+                        <TimeWidget />
+                        <WeatherWidget />
+                    </div>
                     <form id="search" action={searchEngine} method="get">
                         <div id="search-engine-cont">
-                            <select name="search-engine" className="button" id="search-engine-select"
-                                    onChange={e => setSearchEngine(e.target.value)}>
+                            <select name="search-engine" className="button" id="search-engine-select" onChange={e => setSearchEngine(e.target.value)}>
                                 <option value="https://www.google.com/search">Google</option>
                                 <option value="https://www.bing.com">Bing</option>
-                                <option value="https://www.duckduckgo.com" selected={true}>
-                                    DuckDuckGo
-                                </option>
+                                <option value="https://www.duckduckgo.com">DuckDuckGo</option>
                             </select>
                         </div>
                         <div id="search-input-cont">
