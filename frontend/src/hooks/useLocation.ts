@@ -26,7 +26,7 @@ const getSubscribe = (location: GeoLocation, setLocation: (x: GeoLocation) => vo
                 // Save the user's location in localStorage
                 setLocation({ location: userLocation, locationPermission: 'granted' });
             },
-            function (error) {
+            function () {
                 // If the user denies permission, store null in the userLocation variable
                 const userLocation = null;
                 // Save the user's location in localStorage

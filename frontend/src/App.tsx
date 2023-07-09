@@ -8,7 +8,7 @@ function App() {
     const greeting = useMemo(() => {
         const date = new Date()
         const hour = date.getHours();
-        let greeting = "";
+        let greeting: string;
         if (hour < 5 || hour >= 18) {
             greeting = "Good evening."
         } else if (hour < 12) {
