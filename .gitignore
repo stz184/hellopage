@@ -17,7 +17,7 @@
 
 # Backend
 /backend/node_modules
-/backend/log
+/backend/log/
 !/backend/log/.gitkeep
 
 # Configuration
