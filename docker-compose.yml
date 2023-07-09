@@ -5,6 +5,8 @@ services:
     build:
       context: ./frontend
       target: prod
+    environment:
+      - REACT_APP_BACKEND_URL
     depends_on:
       - backend
 
@@ -24,8 +26,9 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD
+      - MONGO_INITDB_DATABASE
     expose:
-      - "27170"
+      - "27017"
     volumes:
       - mongodb_data_container:/data/db
 

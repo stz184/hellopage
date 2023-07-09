@@ -1,17 +1,17 @@
 
 import Controller from "../../decorators/RouteDecorotor/controller.docorator"
 import { Get } from "../../decorators/RouteDecorotor/handler.controller";
-import UserService from "../userServices/userServices"
+import WeatherService, {WeatherParams} from "../weatherService/weatherService";
 import { Request, Response } from "express";
-import auth from "../../Middleware/auth/User.auth";
-import fetchHelper from "../../utils/FetchHelper";
+
+
 
 @Controller("/Weather")
 class Weather {
 
-    private user;
+    private weather: WeatherService;
     constructor(){
-      this.user = new UserService(); // User Service Object.
+      this.weather = new WeatherService(); // User Service Object.
     }
 
     @Get("/weather/:lat/:lon", []) // Handler.
@@ -23,8 +23,8 @@ class Weather {
 
 
 
+        this.weather.getWeather(req, res);
     }
-    
 
 }
 

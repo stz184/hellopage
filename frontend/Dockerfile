@@ -43,10 +43,10 @@ COPY --from=deps --link /srv/app/node_modules ./node_modules
 RUN pnpm run build
 
 
-# Production image, copy all the files and run next
+# Production image, copy all the files
 FROM node:18-alpine AS prod
 WORKDIR /srv/app
 
 ENV NODE_ENV production
 
-COPY --from=builder --link /srv/app/public ./public
+COPY --from=builder --link /srv/app/build ./build

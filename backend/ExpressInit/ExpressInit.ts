@@ -1,25 +1,27 @@
-
 import express, { Express, Handler } from "express"
 import { logger, stream } from "../Logger/CreateLogger";
 import { Server } from "http";
 import morgan from 'morgan';
+import cors from 'cors';
 import MetadataKeys from "../utils/metadata.key";
 import { IRouter } from "../decorators/RouteDecorotor/handler.controller";
 import Controller from "../decorators/RouteDecorotor/controller.docorator";
 import { err } from "../Errors/Error";
 import { ErrorRequestHandler } from "express-serve-static-core";
-class ExpressApp {
 
+class ExpressApp {
 
     private app: Express;
     private port: Number | String;
     constructor(port: number | String, middleware: any[], controllers: any[]) {
         this.app = express();
         this.port = port;
+        this.setupCors();
         this.Middleware(middleware);
         this.setupLogger();
         this.setupController(controllers);
         this.setupErrorHandler(err);
+
     }
     
     private setupErrorHandler(err:ErrorRequestHandler) {
@@ -66,6 +68,7 @@ class ExpressApp {
             this.app.use(Middleware);
         });
     }
+
     // Satup the Logger middleware. This middleware handle the production as well as        Devlopemnt Env.
     private setupLogger() {
         if (process.env.NODE_ENV !== "production") {
@@ -79,10 +82,19 @@ class ExpressApp {
         }
     }
 
+    private setupCors() {
+        this.app.use(cors({
+            "origin": "*",
+            "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+            "preflightContinue": false,
+            "optionsSuccessStatus": 204
+        }));
+    }
+
     // Start initial Function. which return the SIGMA. 
     start(): Server {
         return this.app.listen(this.port, () => {
-            logger.info(`App is start on the port ${this.port}`)
+            logger.info(`App is started on port ${this.port}`)
         });
 
     }
