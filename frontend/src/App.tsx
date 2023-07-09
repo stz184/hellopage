@@ -1,5 +1,4 @@
 import React, {useEffect, useMemo} from 'react';
-import './App.css';
 import TimeWidget from './components/TimeWidget';
 import WeatherWidget from './components/WeatherWidget';
 

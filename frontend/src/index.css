@@ -90,6 +90,7 @@ h2 {
   margin: 0;
   padding: 0;
   height: 36px;
+  line-height: 36px;
   display: flex;
   justify-content: space-between;
   font-size: min(15vw, 30px);
@@ -257,4 +258,37 @@ a:hover > .link-text {
   #links {
     grid-template-columns: 1fr;
   }
+}
+
+.weather-widget__temperature {
+  margin-right: 10px;
+}
+
+.owi::before {
+  font-size: 25px;
+  line-height: 36px;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.my-tooltip {
+  width: 140px;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  background-color: var(--pane-bg-color);
+  box-shadow: 5px 5px 3px 0px var(--shadow-color);
+  color: #fff;
+  font-size: 0.875rem;
+  text-align: center;
 }
