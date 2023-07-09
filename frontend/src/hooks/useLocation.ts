@@ -1,4 +1,3 @@
-import { useState, useSyncExternalStore } from "react";
 import { useLocalStorageState } from "./useLocalStorageState";
 
 type Coordinates = {

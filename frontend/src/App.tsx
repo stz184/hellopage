@@ -1,11 +1,10 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import TimeWidget from './components/TimeWidget';
 import WeatherWidget from './components/WeatherWidget';
 
 
 function App() {
     const [searchEngine, setSearchEngine] = React.useState('https://www.duckduckgo.com');
-    const [time, setTime] = React.useState('');
     const greeting = useMemo(() => {
         const date = new Date()
         const hour = date.getHours();
@@ -26,12 +25,13 @@ function App() {
                 <h1>{greeting}</h1>
                 <div id="main-content">
                     <div id="widgets">
-                        <TimeWidget />
-                        <WeatherWidget />
+                        <TimeWidget/>
+                        <WeatherWidget/>
                     </div>
                     <form id="search" action={searchEngine} method="get">
                         <div id="search-engine-cont">
-                            <select name="search-engine" className="button" id="search-engine-select" onChange={e => setSearchEngine(e.target.value)}>
+                            <select name="search-engine" className="button" id="search-engine-select"
+                                    onChange={e => setSearchEngine(e.target.value)}>
                                 <option value="https://www.google.com/search">Google</option>
                                 <option value="https://www.bing.com">Bing</option>
                                 <option value="https://www.duckduckgo.com">DuckDuckGo</option>

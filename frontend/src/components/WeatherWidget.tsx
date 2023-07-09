@@ -16,7 +16,7 @@ const WeatherWidget: React.FC = () => {
                 setWeather(response);
             });
         }
-    }, [location]);
+    }, [location, BACKEND_URL]);
 
     if (!weather) {
         return null;
