@@ -2,10 +2,25 @@ import React, {useMemo} from 'react';
 import TimeWidget from './components/TimeWidget';
 import WeatherWidget from './components/WeatherWidget';
 import NewsWidget from './components/NewsWidget';
+import {useLocalStorageState} from "./hooks/useLocalStorageState";
 
+const searchEngines = [
+    {
+        name: 'Google',
+        url: 'https://www.google.com/search'
+    },
+    {
+        name: 'Bing',
+        url: 'https://www.bing.com'
+    },
+    {
+        name: 'DuckDuckGo',
+        url: 'https://www.duckduckgo.com'
+    }
+];
 
 function App() {
-    const [searchEngine, setSearchEngine] = React.useState('https://www.duckduckgo.com');
+    const [searchEngine, setSearchEngine] = useLocalStorageState('search-engine', 'https://www.duckduckgo.com');
     const greeting = useMemo(() => {
         const date = new Date()
         const hour = date.getHours();
@@ -31,17 +46,19 @@ function App() {
                     </div>
                     <form id="search" action={searchEngine} method="get">
                         <div id="search-engine-cont">
-                            <select name="search-engine" className="button" id="search-engine-select"
-                                    onChange={e => setSearchEngine(e.target.value)}>
-                                <option value="https://www.google.com/search">Google</option>
-                                <option value="https://www.bing.com">Bing</option>
-                                <option value="https://www.duckduckgo.com">DuckDuckGo</option>
+                            <select name="search-engine" className="button" id="search-engine-select"  onChange={e => setSearchEngine(e.target.value)}>
+                                {searchEngines.map((engine, index) => (
+                                    <option key={index} value={engine.url} selected={engine.url === searchEngine}>
+                                        {engine.name}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                         <div id="search-input-cont">
                             <input
                                 id="search-input"
                                 placeholder="Enter search term here"
+                                name="q"
                                 autoFocus={true}
                             />
                         </div>
