@@ -21,6 +21,7 @@ services:
       - RSS_FEED_URL
     depends_on:
       - mongodb
+    restart: always
 
   mongodb:
     image: mongo:latest
@@ -32,6 +33,7 @@ services:
       - "27017"
     volumes:
       - mongodb_data_container:/data/db
+    restart: always
 
 volumes:
   mongodb_data_container:
