@@ -1,7 +1,7 @@
 
 import Controller from "../../decorators/RouteDecorotor/controller.docorator"
 import { Get } from "../../decorators/RouteDecorotor/handler.controller";
-import WeatherService, {WeatherParams} from "../weatherService/weatherService";
+import WeatherService, {WeatherParams} from "../services/weatherService";
 import { Request, Response } from "express";
 
 
@@ -10,8 +10,9 @@ import { Request, Response } from "express";
 class Weather {
 
     private weather: WeatherService;
+
     constructor(){
-      this.weather = new WeatherService(); // User Service Object.
+        this.weather = new WeatherService();
     }
 
     @Get("/weather/:lat/:lon", []) // Handler.

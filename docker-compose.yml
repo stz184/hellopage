@@ -18,6 +18,7 @@ services:
       - MONGODB_CONNECTION_URI
       - BACKEND_PORT
       - REACT_APP_OPEN_WEATHER_MAP_API_KEY
+      - RSS_FEED_URL
     depends_on:
       - mongodb
 

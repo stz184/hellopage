@@ -1,6 +1,7 @@
 import React, {useMemo} from 'react';
 import TimeWidget from './components/TimeWidget';
 import WeatherWidget from './components/WeatherWidget';
+import NewsWidget from './components/NewsWidget';
 
 
 function App() {
@@ -154,56 +155,7 @@ function App() {
                     </div>
                     <h2>News</h2>
                     <div id="news">
-                        <div className="news-group">
-                            <ul>
-                                <li className="news-group-title red">General</li>
-                                <li>
-                                    <a href="https://en.wikipedia.org">
-                                        <span className="link-text">Wikipedia</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.gmail.com">
-                                        <span className="link-text">Gmail</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://wttr.in">
-                                        <span className="link-text">wttr.in</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.popularfront.co">
-                                        <span className="link-text">Popular Front</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="news-group">
-                            <ul>
-                                <li className="news-group-title blue">Dev</li>
-                                <li>
-                                    <a href="https://www.stackoverflow.com">
-                                        <span className="link-text">Stack Overflow</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.github.com">
-                                        <span className="link-text">GitHub</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://wiki.archlinux.org">
-                                        <span className="link-text">Arch Wiki</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://developer.mozilla.org">
-                                        <span className="link-text">MDN Web Docs</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <NewsWidget />
                     </div>
                 </div>
             </div>

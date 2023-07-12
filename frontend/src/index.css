@@ -39,7 +39,7 @@ body {
   background: url('../public/images/background.jpg') center/cover;
   background-color: var(--bg-color);
   font-family: "Inter", sans-serif;
-  margin: 0px;
+  margin: 0;
   min-height: 100vh;
 }
 
@@ -59,7 +59,7 @@ body {
   background-color: var(--bg-content-color);
   border: solid 2px var(--border-color);
   border-radius: 8px;
-  box-shadow: 0px 0px 10px 5px var(--shadow-color);
+  box-shadow: 0 0 10px 5px var(--shadow-color);
   display: flex;
   gap: 10px;
   padding: min(10vw, 30px);
@@ -107,7 +107,7 @@ h2 {
   padding: min(5vw, 10px);
   background-color: var(--pane-bg-color);
   border-radius: 8px;
-  box-shadow: 5px 5px 3px 0px var(--shadow-color);
+  box-shadow: 5px 5px 3px 0 var(--shadow-color);
   box-sizing: border-box;
   gap: 10px;
   font-size: min(7vw, 14px);
@@ -174,7 +174,7 @@ h2 {
   padding: min(5vw, 10px);
   background-color: var(--pane-bg-color);
   border-radius: 8px;
-  box-shadow: 5px 5px 3px 0px var(--shadow-color);
+  box-shadow: 5px 5px 3px 0 var(--shadow-color);
 }
 
 .link-group-title {
@@ -193,7 +193,7 @@ h2 {
   padding: min(5vw, 10px);
   background-color: var(--pane-bg-color);
   border-radius: 8px;
-  box-shadow: 5px 5px 3px 0px var(--shadow-color);
+  box-shadow: 5px 5px 3px 0 var(--shadow-color);
 }
 
 .news-group-title {
@@ -215,13 +215,13 @@ ul {
 a {
   text-decoration: none;
   display: inline-block;
-  padding: 2px 0px;
+  padding: 2px 0;
   width: 100%;
 }
 
 .link-text {
   display: inline-block;
-  padding: 2px 0px;
+  padding: 2px 0;
   background: linear-gradient(var(--fg-highlight), var(--fg-highlight));
   background-size: 0 0.1em;
   background-position: 0 100%;
@@ -278,17 +278,22 @@ a:hover > .link-text {
 }
 
 .my-tooltip {
-  width: 140px;
+  min-width: 140px;
+  max-width: 350px;
   position: absolute;
   z-index: 10;
-  left: 50%;
-  transform: translateX(-50%);
   padding: 0.5rem;
   border: 1px solid var(--border-color);
   border-radius: 0.25rem;
   background-color: var(--pane-bg-color);
-  box-shadow: 5px 5px 3px 0px var(--shadow-color);
+  box-shadow: 5px 5px 3px 0 var(--shadow-color);
   color: #fff;
   font-size: 0.875rem;
   text-align: center;
+  transition: all 0.12s linear;
+}
+
+.my-tooltip img {
+  width: 300px;
+  height: auto;
 }

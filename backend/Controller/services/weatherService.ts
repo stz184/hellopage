@@ -1,7 +1,7 @@
-import { Request, Response } from "express";
+import {Request, Response} from "express";
 import fetchHelper from "../../utils/FetchHelper";
-import {Weather, WeatherInterface} from "../../models/WeatherModel";
-import { logger } from "../../Logger/CreateLogger";
+import {Weather} from "../../models/WeatherModel";
+import {logger} from "../../Logger/CreateLogger";
 
 export type WeatherParams = {
     lat: number;
@@ -10,11 +10,11 @@ export type WeatherParams = {
 
 
 export default class WeatherService {
-    public getWeather (req: Request<WeatherParams>, res: Response) {
+    public getWeather(req: Request<WeatherParams>, res: Response) {
         const lat = Math.ceil(req.params.lat * 10000) / 10000;
         const lon = Math.ceil(req.params.lon * 10000) / 10000;
         try {
-            Weather.findOne({lat: lat, lon: lon}).then((forecast ) => {
+            Weather.findOne({lat: lat, lon: lon}).then((forecast) => {
                 if (forecast && forecast.timestamp + 3600000 > new Date().getTime()) {
                     res.status(200).json(forecast.weather);
                     return;
