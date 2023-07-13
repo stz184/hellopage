@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import TimeWidget from './components/TimeWidget';
 import WeatherWidget from './components/WeatherWidget';
 import NewsWidget from './components/NewsWidget';
@@ -19,8 +19,14 @@ const searchEngines = [
     }
 ];
 
+type Background = {
+    date: number,
+    value: number
+}
+
 function App() {
     const [searchEngine, setSearchEngine] = useLocalStorageState('search-engine', 'https://www.duckduckgo.com');
+    const [background, setBackground] = useLocalStorageState<Background|null>('background', null);
     const greeting = useMemo(() => {
         const date = new Date()
         const hour = date.getHours();
@@ -34,6 +40,20 @@ function App() {
         }
         return greeting;
     }, []);
+
+    useEffect(() => {
+        if (!background || new Date().getTime() - background.date > 86400000) {
+            const max = 103
+            const backgroundIndex = Math.floor(Math.random() * (1 + max));
+            setBackground({
+                date: new Date().getTime(),
+                value: backgroundIndex
+            });
+        }
+        if (background) {
+            document.body.style.backgroundImage = `url("${process.env.PUBLIC_URL}/images/backgrounds/${background.value}.jpg")`;
+        }
+    }, [background, setBackground]);
 
     return (
         <>

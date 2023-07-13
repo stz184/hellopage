@@ -36,7 +36,8 @@
 }
 
 body {
-  background: url('../public/images/background.jpg') center/cover;
+  background-position:  center;
+  background-size: cover;
   background-color: var(--bg-color);
   font-family: "Inter", sans-serif;
   margin: 0;
