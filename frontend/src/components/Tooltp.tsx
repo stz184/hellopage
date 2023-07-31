@@ -61,7 +61,7 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children, enabled = true }) => 
 
     return (
         <>
-            <div className="my-tooltip" ref={tooltipRef} style={{left: (!enabled || !showTooltip) ? '-999999px' : 0}}>
+            <div className="my-tooltip" ref={tooltipRef} style={{left: (!enabled || !showTooltip) ? '-999999px' : 0, top: (!enabled || !showTooltip) ? '-999999px' : 0}}>
                 <div dangerouslySetInnerHTML={{ __html: text }} />
                 <div className="arrow-down" />
             </div>

@@ -42,7 +42,7 @@ function App() {
     }, []);
 
     useEffect(() => {
-        if (!background || new Date().getTime() - background.date > 86400000) {
+        if (!background || new Date().getTime() - background.date > 86410000) {
             const max = 103
             const backgroundIndex = Math.floor(Math.random() * (1 + max));
             setBackground({

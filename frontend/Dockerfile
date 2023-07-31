@@ -49,4 +49,5 @@ WORKDIR /srv/app
 
 ENV NODE_ENV production
 
-COPY --from=builder --link /srv/app/build ./build
+COPY --from=builder /srv/app/build ./build
+CMD [ "npx", "serve", "-l", "3100", "build" ]

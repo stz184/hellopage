@@ -11,7 +11,7 @@ import dbConnect from './Database/dbConfig'; // connection is a function which r
 
 dbConnect();
 
-const port: any = process.env.BACKEND_PORT || 4000
+const port: any = process.env.BACKEND_PORT || 4100
 
 const app = new ExpressApp(port, [
     express.json()

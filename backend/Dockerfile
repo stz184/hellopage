@@ -30,8 +30,8 @@ RUN pnpm install -r --offline
 # Development image
 FROM deps as dev
 
-EXPOSE 4000
-ENV PORT 4000
+EXPOSE 4100
+ENV PORT 4100
 
 CMD ["sh", "-c", "pnpm install -r --offline; pnpm run dev"]
 

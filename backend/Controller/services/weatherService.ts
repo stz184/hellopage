@@ -19,7 +19,7 @@ export default class WeatherService {
                     res.status(200).json(forecast.weather);
                     return;
                 } else {
-                    const appId = process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY;
+                    const appId = process.env.OPEN_WEATHER_MAP_API_KEY;
 
                     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}&units=metric`;
 
