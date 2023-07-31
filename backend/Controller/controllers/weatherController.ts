@@ -15,15 +15,8 @@ class Weather {
         this.weather = new WeatherService();
     }
 
-    @Get("/weather/:lat/:lon", []) // Handler.
-    getCurrentWeather(req:Request, res:Response){
-        const lat = req.params.lat;
-        const lon = req.params.lon;
-
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=`;
-
-
-
+    @Get("/get/:lat/:lon", []) // Handler.
+    getCurrentWeather(req:Request<WeatherParams>, res:Response){
         this.weather.getWeather(req, res);
     }
 
