@@ -16,8 +16,6 @@ class News {
 
     @Get("/get", []) // Handler.
     getNews(req:Request, res:Response){
-        // res.status(200).json({"message": "Hello World!?"});
-
         this.news.getNews(res);
     }
 
